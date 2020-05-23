@@ -8,12 +8,46 @@
 
 import UIKit
 
-class CurrencyViewController: UIViewController {
+class CurrencyViewController: UIViewController, ExchangeRatesGetterDelegate, CoordinatesGetterDelegate {
 
+    var exchangeRatesGetter : ExchangeRatesGetter!
+    var coordinatesGetter : CoordinateGetter!
+    
+    var exchangeRates : ExchangeRates!
+    
+    @IBOutlet weak var eurRateTA: UITextField!
+    @IBOutlet weak var usdRateTA: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        exchangeRatesGetter = ExchangeRatesGetter(delegate: self)
+        coordinatesGetter = CoordinateGetter(delegate: self)
+        exchangeRatesGetter.getExchangeRates()
+        coordinatesGetter.getCoordinates()
     }
+     
+    func didGetCoordinates(coordinates: Coordinates) {
+        MapViewController.coordinates = coordinates
+    }
+    
+    func didNotGetCoordinates(error: NSError) {
+        print("didNotGetCoordinates error: \(error)")
+    }
+    
+    func didGetRates(exchangeRates: ExchangeRates)
+    {
+        self.exchangeRates = exchangeRates
+        DispatchQueue.main.async() {
+            self.eurRateTA.text = self.exchangeRates.eur_out
+            self.usdRateTA.text = self.exchangeRates.usd_out
+        }
+    }
+    
+    func didNotGetRates(error: NSError)
+    {
+        print("didNotGetRates error: \(error)")
+    }
+    
 
 
 }

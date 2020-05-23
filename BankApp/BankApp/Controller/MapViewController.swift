@@ -18,11 +18,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var points = [Double: Double]()
     
+    static var coordinates = Coordinates() // СЮДА ЗАКИДЫВАЮ КООРДИНАТЫ В STRING
+    
     //MARK: View actions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
         
         setupAnnotations()
     }
