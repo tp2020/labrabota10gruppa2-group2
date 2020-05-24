@@ -15,8 +15,119 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //addUsers()
+        //addTypes()
+        //addAccounts()
         return true
+    }
+    
+    func addAccounts() {
+        guard let accountEntity = NSEntityDescription.entity(forEntityName: "BankAccounts", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        let current = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        current.setValue(1, forKey: "id")
+        current.setValue(1, forKey: "user_id")
+        current.setValue(1, forKey: "type_id")
+        current.setValue("1111 1111 1111", forKey: "number")
+        current.setValue(false, forKey: "isBlocked")
+        
+        let savings = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        savings.setValue(2, forKey: "id")
+        savings.setValue(1, forKey: "user_id")
+        savings.setValue(2, forKey: "type_id")
+        savings.setValue("2222 2222 2222", forKey: "number")
+        savings.setValue(true, forKey: "isBlocked")
+        
+        let credit = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        credit.setValue(3, forKey: "id")
+        credit.setValue(1, forKey: "user_id")
+        credit.setValue(3, forKey: "type_id")
+        credit.setValue("3333 3333 3333", forKey: "number")
+        credit.setValue(true, forKey: "isBlocked")
+        
+        let salary = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        salary.setValue(4, forKey: "id")
+        salary.setValue(1, forKey: "user_id")
+        salary.setValue(4, forKey: "type_id")
+        salary.setValue("4444 4444 4444", forKey: "number")
+        salary.setValue(false, forKey: "isBlocked")
+        
+        let savingsCard = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        savingsCard.setValue(5, forKey: "id")
+        savingsCard.setValue(1, forKey: "user_id")
+        savingsCard.setValue(5, forKey: "type_id")
+        savingsCard.setValue("5555 5555 5555", forKey: "number")
+        savingsCard.setValue(false, forKey: "isBlocked")
+        
+        let creditCard = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
+        
+        creditCard.setValue(6, forKey: "id")
+        creditCard.setValue(1, forKey: "user_id")
+        creditCard.setValue(6, forKey: "type_id")
+        creditCard.setValue("6666 6666 6666", forKey: "number")
+        creditCard.setValue(true, forKey: "isBlocked")
+        
+        saveContext()
+    }
+    
+    func addTypes() {
+        guard let typeEntity = NSEntityDescription.entity(forEntityName: "AccountTypes", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        let current = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        current.setValue(1, forKey: "id")
+        current.setValue("Текущий", forKey: "name")
+        
+        let savings = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        savings.setValue(2, forKey: "id")
+        savings.setValue("Сберегательный", forKey: "name")
+        
+        let credit = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        credit.setValue(3, forKey: "id")
+        credit.setValue("Кредитный", forKey: "name")
+        
+        let salary = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        salary.setValue(4, forKey: "id")
+        salary.setValue("Зарплатный карт-счёт", forKey: "name")
+        
+        let savingsCard = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        savingsCard.setValue(5, forKey: "id")
+        savingsCard.setValue("Сберегательный карт-счёт", forKey: "name")
+        
+        let creditCard = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
+        
+        creditCard.setValue(6, forKey: "id")
+        creditCard.setValue("Кредитный карт-счёт", forKey: "name")
+        
+        saveContext()
+    }
+    
+    func addUsers() {
+        guard let userEntity = NSEntityDescription.entity(forEntityName: "Users", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        let user = NSManagedObject(entity: userEntity, insertInto: persistentContainer.viewContext)
+        
+        user.setValue(1, forKey: "id")
+        user.setValue("Elisaveta", forKey: "name")
+        user.setValue("example", forKey: "login")
+        user.setValue("123", forKey: "password")
+        
+        saveContext()
     }
 
     // MARK: UISceneSession Lifecycle

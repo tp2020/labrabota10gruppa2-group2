@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class LoginViewController: UIViewController {
 
     struct Keys {
         static let login = "login"
-        static let password = "passw"
+        static let password = "password"
         static let email = "email"
     }
     
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     
     var hasAgreement = false
+    var userID = 0
     
     var alertTitle = "Fail"
     var alertMessage = "You typed incorrect data"
@@ -42,8 +44,46 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func confirmAccount() -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+        
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            for data in results as! [NSManagedObject] {
+                
+                if data.value(forKey: Keys.login) as? String == loginTextField.text {
+                    if data.value(forKey: Keys.password) as? String == passwordTextField.text {
+                        userID = data.value(forKey: "id") as! Int
+                        return true
+                    }
+                }
+            }
+        }
+        catch let error as NSError {
+            print("Data loading error: \(error)")
+        }
+        
+        return false
+    }
+    
+    func showAlert() {
+        let alertView = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
     @IBAction func enterButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "showMainMenu", sender: sender)
+        if loginTextField.text != "" && passwordTextField.text != "" {
+            if confirmAccount() {
+                performSegue(withIdentifier: "showMainMenu", sender: sender)
+            }
+            else {
+                showAlert()
+            }
+        }
     }
     
     @IBAction func stateChanged(_ sender: Any) {
@@ -68,8 +108,12 @@ class LoginViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        defaults.setValue(loginTextField.text, forKey: Keys.login)
+        defaults.setValue(passwordTextField.text, forKey: Keys.password)
+        
+        if let vc = segue.destination as? UITabBarController {
+            (vc as! TabbarViewController).userID = userID
+        }
     }
 
 }

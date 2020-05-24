@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		847C48A22479B08E0064E7E5 /* CoordinatesGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C489E2479B08E0064E7E5 /* CoordinatesGetter.swift */; };
-		847C48A32479B08E0064E7E5 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C489F2479B08E0064E7E5 /* Coordinates.swift */; };
-		847C48A42479B08E0064E7E5 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C48A02479B08E0064E7E5 /* Coordinate.swift */; };
 		847C48A52479B08E0064E7E5 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C48A12479B08E0064E7E5 /* ExchangeRates.swift */; };
-		84C7FEA42479B02B0024601A /*   ExchangeRatesGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FEA02479B02B0024601A /*   ExchangeRatesGetter.swift */; };
+		84C7FEA42479B02B0024601A /* ExchangeRatesGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FEA02479B02B0024601A /* ExchangeRatesGetter.swift */; };
 		98EC094F247958DE008DC881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC094E247958DE008DC881 /* AppDelegate.swift */; };
 		98EC0951247958DE008DC881 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC0950247958DE008DC881 /* SceneDelegate.swift */; };
 		98EC0953247958DE008DC881 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC0952247958DE008DC881 /* AccountsViewController.swift */; };
@@ -24,6 +22,9 @@
 		98EC0976247958E5008DC881 /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC0975247958E5008DC881 /* BankAppUITests.swift */; };
 		98EC098724795DDA008DC881 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC098624795DD9008DC881 /* LoginViewController.swift */; };
 		98EC098924797C32008DC881 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC098824797C32008DC881 /* MapViewController.swift */; };
+		98EC098F2479DDBC008DC881 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC098E2479DDBC008DC881 /* Account.swift */; };
+		98EC09912479EB01008DC881 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC09902479EB01008DC881 /* TabbarViewController.swift */; };
+		98EC09932479F222008DC881 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC09922479F222008DC881 /* MenuCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +46,8 @@
 
 /* Begin PBXFileReference section */
 		847C489E2479B08E0064E7E5 /* CoordinatesGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesGetter.swift; sourceTree = "<group>"; };
-		847C489F2479B08E0064E7E5 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
-		847C48A02479B08E0064E7E5 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		847C48A12479B08E0064E7E5 /* ExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
-		84C7FEA02479B02B0024601A /*   ExchangeRatesGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "  ExchangeRatesGetter.swift"; sourceTree = "<group>"; };
+		84C7FEA02479B02B0024601A /* ExchangeRatesGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesGetter.swift; sourceTree = "<group>"; };
 		98EC094B247958DE008DC881 /* BankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98EC094E247958DE008DC881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98EC0950247958DE008DC881 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +65,9 @@
 		98EC0977247958E6008DC881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98EC098624795DD9008DC881 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		98EC098824797C32008DC881 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		98EC098E2479DDBC008DC881 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		98EC09902479EB01008DC881 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		98EC09922479F222008DC881 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,13 +146,13 @@
 		98EC098324795B12008DC881 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84C7FEA02479B02B0024601A /*   ExchangeRatesGetter.swift */,
-				847C48A02479B08E0064E7E5 /* Coordinate.swift */,
-				847C489F2479B08E0064E7E5 /* Coordinates.swift */,
+				84C7FEA02479B02B0024601A /* ExchangeRatesGetter.swift */,
 				847C489E2479B08E0064E7E5 /* CoordinatesGetter.swift */,
 				847C48A12479B08E0064E7E5 /* ExchangeRates.swift */,
 				98EC095C247958E4008DC881 /* Assets.xcassets */,
 				98EC0959247958DE008DC881 /* BankApp.xcdatamodeld */,
+				98EC098E2479DDBC008DC881 /* Account.swift */,
+				98EC09922479F222008DC881 /* MenuCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +173,7 @@
 				98EC0954247958DE008DC881 /* CurrencyViewController.swift */,
 				98EC094E247958DE008DC881 /* AppDelegate.swift */,
 				98EC0950247958DE008DC881 /* SceneDelegate.swift */,
+				98EC09902479EB01008DC881 /* TabbarViewController.swift */,
 				98EC098624795DD9008DC881 /* LoginViewController.swift */,
 				98EC098824797C32008DC881 /* MapViewController.swift */,
 			);
@@ -308,18 +311,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98EC09912479EB01008DC881 /* TabbarViewController.swift in Sources */,
 				98EC098724795DDA008DC881 /* LoginViewController.swift in Sources */,
+				98EC098F2479DDBC008DC881 /* Account.swift in Sources */,
 				847C48A52479B08E0064E7E5 /* ExchangeRates.swift in Sources */,
 				847C48A22479B08E0064E7E5 /* CoordinatesGetter.swift in Sources */,
 				98EC0955247958DE008DC881 /* CurrencyViewController.swift in Sources */,
-				84C7FEA42479B02B0024601A /*   ExchangeRatesGetter.swift in Sources */,
+				84C7FEA42479B02B0024601A /* ExchangeRatesGetter.swift in Sources */,
 				98EC095B247958DE008DC881 /* BankApp.xcdatamodeld in Sources */,
-				847C48A32479B08E0064E7E5 /* Coordinates.swift in Sources */,
+				98EC09932479F222008DC881 /* MenuCollectionViewCell.swift in Sources */,
 				98EC0953247958DE008DC881 /* AccountsViewController.swift in Sources */,
 				98EC094F247958DE008DC881 /* AppDelegate.swift in Sources */,
 				98EC0951247958DE008DC881 /* SceneDelegate.swift in Sources */,
 				98EC098924797C32008DC881 /* MapViewController.swift in Sources */,
-				847C48A42479B08E0064E7E5 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

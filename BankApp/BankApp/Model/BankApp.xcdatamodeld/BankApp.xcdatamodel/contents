@@ -7,6 +7,7 @@
     <entity name="BankAccounts" representedClassName="BankAccounts" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isBlocked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
         <attribute name="type_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
@@ -17,8 +18,8 @@
         <attribute name="password" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Users" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="BankAccounts" positionX="-54" positionY="18" width="128" height="103"/>
         <element name="AccountTypes" positionX="-36" positionY="45" width="128" height="73"/>
+        <element name="BankAccounts" positionX="-54" positionY="18" width="128" height="118"/>
+        <element name="Users" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
