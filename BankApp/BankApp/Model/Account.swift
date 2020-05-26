@@ -9,13 +9,27 @@
 import Foundation
 
 struct Account {
+    var id: Int
+    
     var type: String
     var number: String
     var isBlocked: Bool
+    var currentSum: Double
     
-    init(type: String, number: String, isBlocked: Bool) {
+    var percent: Double?
+    var currencyId: Int
+    var currencyName: String?
+    
+    var issueDate: String?
+    var validityTo: String?
+    
+    init(id: Int, type: String, number: String, isBlocked: Bool,
+         currentSum: Double, currencyId: Int) {
+        self.id = id
         self.type = type
         self.number = number
         self.isBlocked = isBlocked
+        self.currentSum = currentSum
+        self.currencyId = currencyId
     }
 }

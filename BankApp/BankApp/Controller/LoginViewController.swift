@@ -18,16 +18,12 @@ class LoginViewController: UIViewController {
     struct Keys {
         static let login = "login"
         static let password = "password"
-        static let email = "email"
     }
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signUpView: UIView!
-    @IBOutlet weak var repeatedPasswordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var enterButton: UIButton!
     
-    var hasAgreement = false
     var userID = 0
     
     var alertTitle = "Fail"
@@ -37,6 +33,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        enterButton.layer.cornerRadius = 20
 
         if defaults.object(forKey: Keys.login) != nil && defaults.object(forKey: Keys.password) != nil {
             loginTextField.text = defaults.object(forKey: Keys.login) as? String
@@ -83,24 +81,6 @@ class LoginViewController: UIViewController {
             else {
                 showAlert()
             }
-        }
-    }
-    
-    @IBAction func stateChanged(_ sender: Any) {
-        if signUpView.isHidden {
-            signUpView.isHidden = false
-        }
-        else {
-            signUpView.isHidden = true
-        }
-    }
-    
-    @IBAction func agreementChange(_ sender: Any) {
-        if hasAgreement {
-            hasAgreement = false
-        }
-        else {
-            hasAgreement = true
         }
     }
     

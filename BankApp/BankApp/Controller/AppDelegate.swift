@@ -15,10 +15,105 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //deleteAllData(entity: "Users")
+        //deleteAllData(entity: "AccountTypes")
+        //deleteAllData(entity: "BankAccounts")
+        //deleteAllData(entity: "Credits")
+        //deleteAllData(entity: "Validities")
+        //deleteAllData(entity: "Currencies")
+        
         //addUsers()
         //addTypes()
+        //addCurrencies()
         //addAccounts()
+        //addCreditPercents()
+        //addValidities()
+        
         return true
+    }
+    
+    func deleteAllData(entity: String) {
+        let managedContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        }
+        catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+        
+        saveContext()
+    }
+    
+    func addValidities() {
+        guard let validityEntity = NSEntityDescription.entity(forEntityName: "Validities", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        var terms = [NSManagedObject?](repeating: nil, count: 6)
+        
+        for i in 1...6 {
+            terms[i-1] = NSManagedObject(entity: validityEntity, insertInto: persistentContainer.viewContext)
+            terms[i-1]!.setValue(i, forKey: "id")
+            terms[i-1]!.setValue("2018.05.\(i)", forKey: "issue_date")
+            terms[i-1]!.setValue("2022.07.\(i*2)", forKey: "validity_to")
+        }
+        
+        saveContext()
+    }
+    
+    func addCreditPercents() {
+        guard let creditsEntity = NSEntityDescription.entity(forEntityName: "Credits", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        let credit = NSManagedObject(entity: creditsEntity, insertInto: persistentContainer.viewContext)
+        credit.setValue(1, forKey: "id")
+        credit.setValue(3, forKey: "account_id")
+        credit.setValue(5.5, forKey: "percent")
+        
+        let creditCard = NSManagedObject(entity: creditsEntity, insertInto: persistentContainer.viewContext)
+        creditCard.setValue(2, forKey: "id")
+        creditCard.setValue(6, forKey: "account_id")
+        creditCard.setValue(3.13, forKey: "percent")
+        
+        let savings = NSManagedObject(entity: creditsEntity, insertInto: persistentContainer.viewContext)
+        savings.setValue(3, forKey: "id")
+        savings.setValue(2, forKey: "account_id")
+        savings.setValue(2.7, forKey: "percent")
+        
+        let savingsCard = NSManagedObject(entity: creditsEntity, insertInto: persistentContainer.viewContext)
+        savingsCard.setValue(4, forKey: "id")
+        savingsCard.setValue(5, forKey: "account_id")
+        savingsCard.setValue(4.11, forKey: "percent")
+        
+        saveContext()
+    }
+    
+    func addCurrencies() {
+        guard let currencyEntity = NSEntityDescription.entity(forEntityName: "Currencies", in: persistentContainer.viewContext) else {
+            fatalError()
+        }
+        
+        let byn = NSManagedObject(entity: currencyEntity, insertInto: persistentContainer.viewContext)
+        byn.setValue(1, forKey: "id")
+        byn.setValue("BYN", forKey: "currency_name")
+        
+        let usd = NSManagedObject(entity: currencyEntity, insertInto: persistentContainer.viewContext)
+        usd.setValue(2, forKey: "id")
+        usd.setValue("USD", forKey: "currency_name")
+        
+        let eur = NSManagedObject(entity: currencyEntity, insertInto: persistentContainer.viewContext)
+        eur.setValue(3, forKey: "id")
+        eur.setValue("EUR", forKey: "currency_name")
+        
+        saveContext()
     }
     
     func addAccounts() {
@@ -33,6 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         current.setValue(1, forKey: "type_id")
         current.setValue("1111 1111 1111", forKey: "number")
         current.setValue(false, forKey: "isBlocked")
+        current.setValue(100.37, forKey: "current_sum")
+        current.setValue(1, forKey: "currency_id")
+        
         
         let savings = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
         
@@ -41,6 +139,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         savings.setValue(2, forKey: "type_id")
         savings.setValue("2222 2222 2222", forKey: "number")
         savings.setValue(true, forKey: "isBlocked")
+        savings.setValue(254.0, forKey: "current_sum")
+        savings.setValue(2, forKey: "currency_id")
         
         let credit = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
         
@@ -49,6 +149,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         credit.setValue(3, forKey: "type_id")
         credit.setValue("3333 3333 3333", forKey: "number")
         credit.setValue(true, forKey: "isBlocked")
+        credit.setValue(111.13, forKey: "current_sum")
+        credit.setValue(1, forKey: "currency_id")
         
         let salary = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
         
@@ -57,6 +159,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         salary.setValue(4, forKey: "type_id")
         salary.setValue("4444 4444 4444", forKey: "number")
         salary.setValue(false, forKey: "isBlocked")
+        salary.setValue(307.98, forKey: "current_sum")
+        salary.setValue(3, forKey: "currency_id")
         
         let savingsCard = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
         
@@ -65,6 +169,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         savingsCard.setValue(5, forKey: "type_id")
         savingsCard.setValue("5555 5555 5555", forKey: "number")
         savingsCard.setValue(false, forKey: "isBlocked")
+        savingsCard.setValue(455.06, forKey: "current_sum")
+        savingsCard.setValue(2, forKey: "currency_id")
         
         let creditCard = NSManagedObject(entity: accountEntity, insertInto: persistentContainer.viewContext)
         
@@ -73,6 +179,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         creditCard.setValue(6, forKey: "type_id")
         creditCard.setValue("6666 6666 6666", forKey: "number")
         creditCard.setValue(true, forKey: "isBlocked")
+        creditCard.setValue(233.44, forKey: "current_sum")
+        creditCard.setValue(1, forKey: "currency_id")
         
         saveContext()
     }
@@ -85,32 +193,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let current = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         current.setValue(1, forKey: "id")
-        current.setValue("Текущий", forKey: "name")
+        current.setValue("Current", forKey: "name")
         
         let savings = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         savings.setValue(2, forKey: "id")
-        savings.setValue("Сберегательный", forKey: "name")
+        savings.setValue("Savings", forKey: "name")
         
         let credit = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         credit.setValue(3, forKey: "id")
-        credit.setValue("Кредитный", forKey: "name")
+        credit.setValue("Credit", forKey: "name")
         
         let salary = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         salary.setValue(4, forKey: "id")
-        salary.setValue("Зарплатный карт-счёт", forKey: "name")
+        salary.setValue("Salary card account", forKey: "name")
         
         let savingsCard = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         savingsCard.setValue(5, forKey: "id")
-        savingsCard.setValue("Сберегательный карт-счёт", forKey: "name")
+        savingsCard.setValue("Savings card account", forKey: "name")
         
         let creditCard = NSManagedObject(entity: typeEntity, insertInto: persistentContainer.viewContext)
         
         creditCard.setValue(6, forKey: "id")
-        creditCard.setValue("Кредитный карт-счёт", forKey: "name")
+        creditCard.setValue("Credit card account", forKey: "name")
         
         saveContext()
     }

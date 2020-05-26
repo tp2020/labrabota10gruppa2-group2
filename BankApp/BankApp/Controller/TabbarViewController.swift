@@ -25,17 +25,15 @@ class TabbarViewController: UITabBarController {
         let managedObjectContext = appDelegate.persistentContainer.viewContext
         var fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AccountTypes")
         
-        var types = [String]()
+        var types = [Int: String]()
         
         do {
             let results = try managedObjectContext.fetch(fetchRequest)
             
             for data in results as! [NSManagedObject] {
                 let name = data.value(forKey: "name") as! String
-                
-                if !types.contains(name) {
-                    types.append(name)
-                }
+                let id = data.value(forKey: "id") as! Int
+                types[id] = name
             }
             
         }
@@ -58,8 +56,12 @@ class TabbarViewController: UITabBarController {
                     let id = data.value(forKey: "id") as! Int
                     let number = data.value(forKey: "number") as! String
                     let isBlocked = data.value(forKey: "isBlocked") as! Bool
+                    let currentSum = data.value(forKey: "current_sum") as! Double
+                    let currencyId = data.value(forKey: "currency_id") as! Int
                     
-                    accounts.append(Account(type: types[id - 1], number: number, isBlocked: isBlocked))
+                    accounts.append(Account(id: id, type: types[id]!,
+                        number: number, isBlocked: isBlocked,
+                        currentSum: currentSum, currencyId: currencyId))
                 }
             }
             
