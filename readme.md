@@ -12,7 +12,8 @@
 * To use the currency exchange just choose the currency and enter the sum. Another filds will reload automaticaly.
 ## Conributing
 This is an application, created by students of BSU, Programing Technologies course, 2020:
-@sheltered-person - management, UI design and code, specifications and requeremnets
-@gleblevotskiy - database architecture, integration, code and tests
+
+* [@sheltered-person](https://github.com/sheltered-person) - management, UI design and code, specifications and requeremnets.
+* [@GlebLevotskiy](https://github.com/GlebLevotskiy) - database architecture, integration, code and tests.
 
 https://drive.google.com/drive/folders/1ivn_JYcj-JmLsp5v9V0gdhrIGwXGrfKl?usp=sharing
