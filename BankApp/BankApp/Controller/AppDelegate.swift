@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //deleteAllData(entity: "Validities")
         //deleteAllData(entity: "Currencies")
         
-        //addUsers()
-        //addTypes()
-        //addCurrencies()
-        //addAccounts()
-        //addCreditPercents()
-        //addValidities()
+        /*addUsers()
+        addTypes()
+        addCurrencies()
+        addAccounts()
+        addCreditPercents()
+        addValidities()*/
         
         return true
     }

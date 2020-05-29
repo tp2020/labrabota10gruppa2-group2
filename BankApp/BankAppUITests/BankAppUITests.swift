@@ -9,27 +9,70 @@
 import XCTest
 
 class BankAppUITests: XCTestCase {
+    var app: XCUIApplication!
+
+    // MARK: - XCTestCase
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        // Since UI tests are more expensive to run, it's usually a good idea
+        // to exit if a failure was encountered
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+
+        // We send a command line argument to our app,
+        // to enable it to reset its state
+        app.launchArguments.append("--uitesting")
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    func testEnable() {
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(app.isEnabled)
+    }
+    
+    func testLogin()
+    {
+        app.launch()
+        
+        XCTAssertTrue(app.isEnabled)
+        
+        app.textFields["Enter login"].tap()
+        app.textFields["Enter login"].clearText(andReplaceWith: "example")
+        app.textFields["Enter password"].tap()
+        app.textFields["Enter password"].clearText(andReplaceWith: "123")
+        
+        app.buttons["Enter"].tap()
+        
+        XCTAssertEqual(app.navigationBars.element.identifier, "BankApp.TabbarView")
+    }
+    
+    func testReturnToLoginView()
+    {
+        app.launch()
+        
+        XCTAssertTrue(app.isEnabled)
+        
+        app.textFields["Enter login"].tap()
+        app.textFields["Enter login"].clearText(andReplaceWith: "example")
+        app.textFields["Enter password"].tap()
+        app.textFields["Enter password"].clearText(andReplaceWith: "123")
+        
+        app.buttons["Enter"].tap()
+        
+        XCTAssertEqual(app.navigationBars.element.identifier, "BankApp.TabbarView")
+        
+        app.navigationBars["BankApp.TabbarView"].buttons["Login"].tap()
+        
+        
+        //app.tabBars.buttons["Currency"].tap();
+        
+         XCTAssertEqual(app.navigationBars.element.identifier, "Login")
     }
 
     func testLaunchPerformance() {
@@ -41,3 +84,26 @@ class BankAppUITests: XCTestCase {
         }
     }
 }
+
+extension XCUIElement {
+    func clearText(andReplaceWith newText:String? = nil) {
+        tap()
+        press(forDuration: 1.0)
+        var select = XCUIApplication().menuItems["Select All"]
+
+        if !select.exists {
+            select = XCUIApplication().menuItems["Select"]
+        }
+        //For empty fields there will be no "Select All", so we need to check
+        if select.waitForExistence(timeout: 0.5), select.exists {
+            select.tap()
+            typeText(String(XCUIKeyboardKey.delete.rawValue))
+        } else {
+            tap()
+        }
+        if let newVal = newText {
+            typeText(newVal)
+        }
+    }
+}
+		

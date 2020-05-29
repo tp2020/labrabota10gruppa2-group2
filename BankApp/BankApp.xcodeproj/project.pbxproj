@@ -48,6 +48,7 @@
 /* Begin PBXFileReference section */
 		847C489E2479B08E0064E7E5 /* CoordinatesGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesGetter.swift; sourceTree = "<group>"; };
 		847C48A12479B08E0064E7E5 /* ExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
+		84BA7DCC247FFCEA00E98429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C7FEA02479B02B0024601A /* ExchangeRatesGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesGetter.swift; sourceTree = "<group>"; };
 		9825406E247D2EC6009DE499 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		98254071247DB588009DE499 /* BankApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BankApp.xcdatamodel; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				98EC096A247958E5008DC881 /* BankAppTests.swift */,
+				84BA7DCC247FFCEA00E98429 /* Info.plist */,
 			);
 			path = BankAppTests;
 			sourceTree = "<group>";
